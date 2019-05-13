@@ -1,0 +1,40 @@
+\subsubsection{Relational Database Management Systems}
+While developing software applications, programmers use \newacr{relational database management systems}{RDBMS} to create, read, update and delete back-end data. A relational database is a type of database. It uses a structure that allows us to identify and access data in relation to another piece of data in the database. Often, data in a relational database is organized into tables. They manipulate the RDBMS through custom \newacr{Structured Query Language}{SQL} statements. Developers have the option to choose from several RDBMS according to specific requirements of each project. Three of the most popular RDBMS's are MySQL, Oracle and \newacr{Microsoft}{MS} SQL Server, and as such one must be aware of the similarities and differences between them. 
+
+% Similarities
+\subsubsection{Similarities}
+
+Oracle, MS SQL Server and MySQL are relational database platforms, so they have several similarities. Most developers specialize in either one or the other, because although they appear similar, the way they work in the underlying architecture is very different. Here are some similarities, which make it somewhat easy for a database developer to work on these platforms efficiently, even if they specialize in only one.
+\begin{itemize}
+    \item \textbf{Scalability:} All platforms scale well. You can use them for small projects, and if these projects take off to an enterprise-level, they can still support millions of transactions a day.
+    
+    \item \textbf{High-performance:} A database is an application’s backbone, it stores all of the data, so it needs to be able to return data in less than a second. Each platforms can handle this type of high-performance speed.
+    
+    \item \textbf{Tables:} All these platforms use the standard relational database table model to store data in rows and columns.
+    
+    \item \textbf{Keys:} All these platforms use primary and foreign keys to establish relationships between tables.
+    '
+    \item \textbf{Syntax:} Syntax between the database platforms are similar, being rooted in standard SQL, with minor differences across different statements.
+    
+    \item \textbf{Web-based popularity:} Microsoft SQL Server and MySQL are the most common databases used for web applications. When signing up for hosting,there is typically get a choice between MySQL databases or SQL Server. Oracle can also be used for web applications, but it requires the use of a specific tool.
+    
+    \item \textbf{Drivers:} You can find connection drivers for almost any popular language on the web, so you can easily connect to the platforms without writing complex code.
+\end{itemize}
+
+% Differences
+\subsubsection{Differences}
+
+While these platforms are similar in the interface and basic relational database standards, they are two very different programs and operate differently. Most of the differences are in the way they operate in the background, and these differences are not seen by the average user. It is important to know these differences because they will play a huge role in your choice of platform.
+
+\begin{itemize}
+    \item \textbf{Native compatibility:} All the RDBMS's work with both Windows and Linux projects, but MySQL works natively with PHP and MSSQL is mainly used with .NET. It makes integration simpler with MySQL for PHP and MSSQL for Windows projects. 
+    \item \textbf{Cost:} MSSQL Server and Oracle are generally expensive to run, because you need licenses for the server running the software. MySQL is free and open-source, but must pay for support if it is needed.
+    
+    \item \textbf{Entity Framework:} With MSSQL, you can set up your entity framework classes in .NET which helps you map the objects in the database. You can then use LINQ queries to get data from the database. With MySQL and .NET, you need to download third-party provider tools. More information about Entity Framework and LINQ can be found under \textnameref{section:database_communication_layer_design}.
+    
+    \item \textbf{IDE tools:} Both platforms have IDE tools, but you need the right tool with the right server. MSSQL uses Management Studio and MySQL has Enterprise Manager. These tools let you connect to the server and manage settings and configurations for security, architecture, and table design.
+\end{itemize}
+
+\noindent
+MS SQL Server has been selected for the database server mainly because of the integration of Entity Framework together with C\# and .NET which makes it easier for the developer to communicate with the database.
+Cost has not been a factor as the database is provided free of charge from the AAU IT Services.

@@ -1,0 +1,57 @@
+\chapter{Product Requirements}\label{ch:product_requirements}
+\fancyhead[LE,RO]{\thechapter\hsp Product Requirements}
+
+This chapter describes all the requirements for the product MathChatBot, which is the proposed solution to this reports problem statement.
+
+\setlength{\tabcolsep}{0.5em} % for the horizontal padding
+\renewcommand{\arraystretch}{1.5}% for the vertical padding
+\newcounter{rownumbers}
+\newcommand\rownumber{\stepcounter{rownumbers}\arabic{rownumbers}}
+\rowcolors{2}{white}{white}
+%\begin{table}[H]
+%\centering
+\small
+\begin{longtable}{|C{.03\linewidth}|L{.12\linewidth}|L{.15\linewidth}|p{.45\linewidth}|C{.2\linewidth}|}
+\caption{Requirements for the solution}
+\label{table:requirements_for_the_solution}
+\endfirsthead
+\endhead
+\hline
+\rowcolor[HTML]{FFFFFF} 
+\multicolumn{1}{|c|}{\cellcolor{lightgray}{\color[HTML]{000000}}\textbf{ID}} & 
+\multicolumn{1}{c|}{\cellcolor{lightgray}{\color[HTML]{000000} \textbf{Category}}} & 
+\multicolumn{1}{c|}{\cellcolor{lightgray}{\color[HTML]{000000} \textbf{Requirement}}} & 
+\multicolumn{1}{c|}{\cellcolor{lightgray}{\color[HTML]{000000} \textbf{Description}}} & 
+\multicolumn{1}{c|}{\cellcolor{lightgray}{\color[HTML]{000000} \textbf{Priority}}} \\ 
+\hline
+\rownumber & Basics & Desktop application & The application targets desktop computers. & \multicolumn{1}{c|}{\musthave} \\ 
+\hline
+\rownumber & Basics & Windows 10 & The application targets the platform Windows 10. & \multicolumn{1}{c|}{\musthave} \\ 
+\hline
+\rownumber & Basics & Database & A database is used for data management. & \multicolumn{1}{c|}{\musthave} \\ 
+\hline
+\rownumber & Design & GUI & The solution should have a \newacr{Graphical User Interface}{GUI}. & \multicolumn{1}{c|}{\musthave} \\ 
+\hline
+\rownumber & Design & Login & A login window where you have to write username and password. & \multicolumn{1}{c|}{\musthave} \\ 
+\hline
+\rownumber & Design & Chat & A chat window where you can chat with the chatbot. & \multicolumn{1}{c|}{\musthave}\vskip 0.2cm \\ 
+\hline
+\rownumber & Design & Admin Controls & A admin controls window where you can add, edit and remove values from the database. & \multicolumn{1}{c|}{\musthave} \\ 
+\hline
+\rownumber & Design & Help Requests & A help request window where teachers get an overview of the help requests from students. & \multicolumn{1}{c|}{\musthave} \\ 
+\hline
+\rownumber & Feature & Simple calculator & A calculator consisting of addition, substraction, multiplication and division command & \multicolumn{1}{c|}{\musthave} \\ 
+\hline
+\rownumber & Feature & Advanced calculator & A calculator that can help solve more advanced things like algorithms & \multicolumn{1}{c|}{\nicetohave} \\ 
+\hline
+\rownumber & Feature & Topic learning & Can help you learn about different math C level topics. More information about the specific topics can be found in \textnameref{sec:math_topics}. & \multicolumn{1}{c|}{\musthave} \\ 
+\hline
+\rownumber & Feature & NLP integration & NLP is used when the chatbot is processing user input & \multicolumn{1}{c|}{\musthave} \\ 
+\hline
+\rownumber & Feature & Conversational maturity integration & The chatbot should use natural language to communicate with the user & \multicolumn{1}{c|}{\musthave} \\ 
+\hline
+\rownumber & Test & Unit test & The application should use a Unit test to ensure easier maintenance & \multicolumn{1}{c|}{\musthave} \\ 
+\hline
+\end{longtable}%
+    %\label{table:a_list_of_solution_features}
+%\end{table}

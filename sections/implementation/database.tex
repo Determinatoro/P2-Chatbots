@@ -1,0 +1,79 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Database
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section{Database}
+
+\missing
+
+\Lstlistingref{lst:create_table_materials}
+
+\begin{lstlisting}[style=SQLstyle, label=lst:create_table_materials, caption={This is the SQL code used for creating the Materials table}]
+CREATE TABLE Materials (
+	Id int PRIMARY KEY NOT NULL IDENTITY(1,1),
+
+	TermId int,
+	TopicId int,
+	[Source] varchar(max) NOT NULL,
+	ShowOrderId int NOT NULL,
+
+	FOREIGN KEY (TopicId) REFERENCES [Topics](Id),
+	FOREIGN KEY (TermId) REFERENCES [Terms](Id),
+
+	CONSTRAINT CK_Materials_TermId_TopicId_only_of_them_not_null 
+	CHECK ((TermId IS NOT NULL AND TopicId IS NULL) OR (TermId IS NULL AND TopicId IS NOT NULL)),
+	CONSTRAINT UQ_Materials_TermId_ShowOrderId UNIQUE (TermId,ShowOrderId),
+	CONSTRAINT UQ_Materials_TopicId_ShowOrderId UNIQUE (TopicId,ShowOrderId)
+)
+\end{lstlisting}
+
+\clearpage
+\begin{lstlisting}[style=SQLstyle]
+CREATE TRIGGER [dbo].[SetShowOrderMaterials]
+ ON [dbo].[Materials]
+ INSTEAD OF INSERT
+AS
+BEGIN
+  SET NOCOUNT ON;
+  
+  DECLARE @TermId int, @TopicId int, @ShowOrderId int, @Count int
+          
+  SELECT @TermId = TermId, @TopicId = TopicId FROM inserted
+  
+  IF (@TermId IS NOT NULL)
+  BEGIN
+	IF NOT EXISTS (SELECT 1 FROM Materials WHERE TermId = @TermId)
+	BEGIN
+		SET @ShowOrderId = 1
+	END
+	ELSE
+	BEGIN
+		SELECT @Count = COUNT(TermId) FROM Materials WHERE TermId = @TermId 
+		SET @Count = @Count + 1
+
+		SET @ShowOrderId = @Count
+	END
+
+	INSERT dbo.Materials (TermId, [Source], ShowOrderId)
+		SELECT TermId, [Source], @ShowOrderId FROM inserted 
+  END
+  ELSE
+  BEGIN
+	IF NOT EXISTS (SELECT 1 FROM Materials WHERE TopicId = @TopicId)
+	BEGIN
+		SET @ShowOrderId = 1
+	END
+	ELSE
+	BEGIN
+		SELECT @Count = COUNT(TopicId) FROM Materials WHERE TopicId = @TopicId
+		SET @Count = @Count + 1
+
+		SET @ShowOrderId = @Count
+	END
+
+	INSERT dbo.Materials (TopicId, [Source], ShowOrderId)
+		SELECT TopicId, [Source], @ShowOrderId FROM inserted 
+  END
+END
+\end{lstlisting}
+

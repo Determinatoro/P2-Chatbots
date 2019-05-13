@@ -1,0 +1,16 @@
+\subsection{WPF}
+\newacr{Windows Presentation Formation}{WPF} is a UI Framework used to make desktop client applications. WPF is generally made up of the markup language XAML and the .NET Framework. Because it has the .NET Framework integrated, it uses the same principles that is used in the programming language C\# \cite{2015IntroductionDocs}.
+A markup language is a computer language which uses tags to define elements on a page \cite{MarkupDefinition}. Tags are generally human readable, meaning markup files generally contain normal words instead of programming syntax. Apart from XAML, a very common markup language is HTML which is used for web pages. \Lstlistingref{lst:example_of_markup} shows an example of XAML, with \enquote{Grid} being an example of a tag used for creating a checkbox in the page the XAML is affecting.
+
+\begin{lstlisting}[style=XMLstyle, numbers=none, xleftmargin=0\textwidth, label=lst:example_of_markup, caption={An example of XAML}]
+<Grid HorizontalAlignment="Stretch" Margin="2">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="33"/>
+    </Grid.RowDefinitions>
+</Grid>
+\end{lstlisting}
+
+\noindent
+WPF lets developers design their applications in a decorative way using a framework developed and maintained by Microsoft. It makes it easier to change the appearance of applications as you can use databinding, templates, animations and much more. Alternatively, developers would need to draw elements manually, make their own animations and develop methods to handle the interaction of users such as multi touch and much more; which would result in a lot of extra work \cite{WPFOverview}. 
+
+% Indholdet er godt, der mangler bare lige arugumentation for brug af WPF

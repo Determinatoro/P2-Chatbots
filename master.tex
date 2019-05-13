@@ -1,0 +1,172 @@
+\input{setup/preamble.tex}% package inclusion and set up of the document
+\input{sections/glossary.tex}
+\input{setup/hyphenations.tex}% 
+\input{setup/macros.tex}% my new macros
+
+\begin{document}
+\selectlanguage{english}
+
+% Setting
+\pagenumbering{roman} %use roman page numbering in the frontmatter
+
+% Front page
+\input{sections/front_page/frontpage_advanced.tex}
+
+% After front page (Title page, Preface, Contents)
+\input{sections/after_front_page/titlepages.tex}
+\input{sections/after_front_page/preface.tex}
+\tableofcontents
+
+% Setting
+\pagestyle{fancy} % Enable headers and footers again
+
+%%%%%%%%%%%%%%%%%%%%%% Introduction 
+\input{sections/introduction/introduction.tex}
+%%%%%%%%%%%%%%%%%%%%%% Introduction 
+
+%%%%%%%%%%%%%%%%%%%%%% Problem Analysis 
+\input{sections/problem_analysis/problem_analysis.tex}
+
+\input{sections/problem_analysis/teacher_workload.tex}
+\input{sections/problem_analysis/math_and_students.tex}
+\input{sections/problem_analysis/learning_processes.tex}
+\input{sections/problem_analysis/chatbots.tex}
+\input{sections/problem_analysis/stakeholder_analysis.tex}
+
+%%%%%%%%%%%%%%%%%%%%%% Problem Analysis 
+
+%%%%%%%%%%%%%%%%%%%%%% Problem Delimitation 
+\input{sections/problem_delimitation/problem_delimitation.tex}
+
+% Problem Statement
+\input{sections/problem_delimitation/problem_statement.tex}
+
+%%%%%%%%%%%%%%%%%%%%%% Problem Delimitation 
+
+%%%%%%%%%%%%%%%%%%%%%% Product Requirements 
+\input{sections/product_requirements/product_requirements.tex}
+
+% Math Topics
+\input{sections/product_requirements/math_topics.tex}
+
+%%%%%%%%%%%%%%%%%%%%%% Product Requirements 
+
+%%%%%%%%%%%%%%%%%%%%%% Analysis & Design 
+\input{sections/analysis_and_design/analysis_and_design.tex}
+
+%%%%%%%%%%% Application Design 
+\clearpage
+
+% Intro
+\input{sections/analysis_and_design/application_design/application_design.tex}
+
+% Programming Language, Platform, Application Flow
+\input{sections/analysis_and_design/application_design/csharp.tex}
+\input{sections/analysis_and_design/application_design/wpf.tex}
+\input{sections/analysis_and_design/application_design/application_flow.tex}
+
+% Login
+\input{sections/analysis_and_design/application_design/login.tex}
+
+% Main
+\input{sections/analysis_and_design/application_design/chat_window.tex}
+
+% Help Requests
+\input{sections/analysis_and_design/application_design/help_request.tex}
+
+% Admin Controls
+\input{sections/analysis_and_design/application_design/admin_controls.tex}
+
+% Designing the Chatbot
+\input{sections/analysis_and_design/application_design/chatbot_functionality.tex}
+\input{sections/analysis_and_design/application_design/pos_tagging.tex}
+\input{sections/analysis_and_design/application_design/text_analyzing.tex}
+
+%%%%%%%%%%% Application Design 
+
+%%%%%%%%%%% Database Design 
+\clearpage
+
+% Intro
+\input{sections/analysis_and_design/database_design/database_design.tex}
+
+% Database Selection
+\input{sections/analysis_and_design/database_design/database_selection.tex}
+\input{sections/analysis_and_design/database_design/sql_rdms.tex}
+
+% Database Utilities
+\input{sections/analysis_and_design/database_design/database_utilities.tex}
+\input{sections/analysis_and_design/database_design/sql.tex}
+\input{sections/analysis_and_design/database_design/constraints.tex}
+\input{sections/analysis_and_design/database_design/triggers.tex}
+\input{sections/analysis_and_design/database_design/indexes.tex}
+\input{sections/analysis_and_design/database_design/identity.tex}
+
+% Designing the Database
+\input{sections/analysis_and_design/database_design/designing_the_database.tex}
+\input{sections/analysis_and_design/database_design/database_diagram.tex}
+\input{sections/analysis_and_design/database_design/user_integration.tex}
+\input{sections/analysis_and_design/database_design/materials.tex}
+\input{sections/analysis_and_design/database_design/help_requests.tex}
+
+%%%%%%%%%%% Database Design 
+
+%%%%%%%%%%% Database Communication Layer Design 
+\clearpage
+
+\input{sections/analysis_and_design/database_communication_layer_design/database_communication_layer_design.tex}
+\input{sections/analysis_and_design/database_communication_layer_design/entity_framework.tex}
+\input{sections/analysis_and_design/database_communication_layer_design/linq.tex}
+
+%%%%%%%%%%% Database Communication Layer Design 
+
+%%%%%%%%%%% Implementation 
+\input{sections/implementation/implementation.tex}
+
+% Application
+\input{sections/implementation/application/application.tex}
+\input{sections/implementation/application/calculator.tex}
+\input{sections/implementation/application/login.tex}
+% Database
+\input{sections/implementation/database.tex}
+
+% Database Communication Layer
+\input{sections/implementation/communication_layer.tex}
+
+%%%%%%%%%%% Implementation 
+
+%%%%%%%%%%% Evaluation 
+\input{sections/evaluation/evaluation.tex}
+
+%%%%%%%%%%% Evaluation 
+
+%%%%%%%%%%% Reflection 
+\input{sections/reflection/reflection.tex}
+
+% Discussion
+\input{sections/reflection/discussion.tex}
+
+% Conclusion
+\input{sections/reflection/conclusion.tex}
+
+% Future Work
+\input{sections/reflection/future_work.tex}
+
+%%%%%%%%%%% Reflection 
+
+% Glossary
+\setglossarystyle{altlist}
+\printglossary
+
+% Bibliography
+\clearpage
+\fancyhead[LE,RO]{Bibliography}
+\printbibliography[heading=bibintoc,title={Bibliography}]
+\label{bib:mendeley}
+
+% Appendices
+\begin{appendices}
+% Insert appendices here
+\end{appendices}
+\end{document}
+

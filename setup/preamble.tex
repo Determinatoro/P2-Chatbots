@@ -1,0 +1,449 @@
+%  A simple AAU report template.
+%  2015-05-08 v. 1.2.0
+%  Copyright 2010-2015 by Jesper Kjær Nielsen <jkn@es.aau.dk>
+%
+%  This is free software: you can redistribute it and/or modify
+%  it under the terms of the GNU General Public License as published by
+%  the Free Software Foundation, either version 3 of the License, or
+%  (at your option) any later version.
+%
+%  This is distributed in the hope that it will be useful,
+%  but WITHOUT ANY WARRANTY; without even the implied warranty of
+%  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%  GNU General Public License for more details.
+%
+%  You can find the GNU General Public License at <http://www.gnu.org/licenses/>.
+%
+\documentclass[11pt,a4paper,openright, hidelinks]{report}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Language, Encoding, Comments and Fonts
+% http://en.wikibooks.org/wiki/LaTeX/Internationalization
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Select encoding of your inputs. Depends on
+% your operating system and its default input
+% encoding. Typically, you should use
+%   Linux  : utf8 (most modern Linux distributions)
+%            latin1 
+%   Windows: ansinew
+%            latin1 (works in most cases)
+%   Mac    : applemac
+% Notice that you can manually change the input
+% encoding of your files by selecting "save as"
+% an select the desired input encoding. 
+\usepackage[utf8]{inputenc}
+% Make latex understand and use the typographic
+% rules of the language used in the document.
+\usepackage[danish,english]{babel}
+% Use the palatino font
+\usepackage[sc]{mathpazo}
+% Palatino needs more leading (space between lines)
+\linespread{1.05}         
+% Choose the font encoding
+\usepackage[T1]{fontenc}
+% Out comment text
+\usepackage{comment}
+% Quote text
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{color,soul}
+\addto\captionsdanish{%
+  \renewcommand\appendixname{Bilag}
+  \renewcommand\appendixpagename{Bilag}
+  \renewcommand\appendixtocname{Bilag}
+}
+
+% Please add the following required packages to your document preamble:
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[table,xcdraw,dvipsnames]{xcolor}
+\usepackage{diagbox}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Graphics and Tables
+% http://en.wikibooks.org/wiki/LaTeX/Importing_Graphics
+% http://en.wikibooks.org/wiki/LaTeX/Tables
+% http://en.wikibooks.org/wiki/LaTeX/Colors
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% load a colour package
+\usepackage{xcolor}
+\definecolor{aaublue}{RGB}{33,26,82}% dark blue
+% The standard graphics inclusion package
+\usepackage{graphicx}
+% Set up how figure and table captions are displayed
+\usepackage{caption}
+\usepackage{subcaption}
+\captionsetup{%
+  font=footnotesize,% set font size to footnotesize
+  labelfont=bf % bold label (e.g., Figure 3.2) font
+}
+% Make the standard latex tables look so much better
+\usepackage{array,booktabs}
+% Enable the use of frames around, e.g., theorems
+% The framed package is used in the example environment
+\usepackage{framed}
+% Make a table
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{tabu}
+\usepackage{wrapfig}
+\usepackage[export]{adjustbox}
+\usepackage{lipsum}
+\usepackage{array}
+\usepackage{rotating}
+% List styles
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage[export]{adjustbox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Mathematics
+% http://en.wikibooks.org/wiki/LaTeX/Mathematics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Defines new environments such as equation,
+% align and split 
+\usepackage{amsmath}
+% Adds new math symbols
+\usepackage{amssymb}
+% Use theorems in your document
+% The ntheorem package is also used for the example environment
+% When using thmmarks, amsmath must be an option as well. Otherwise \eqref doesn't work anymore.
+\usepackage[framed,amsmath,thmmarks]{ntheorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page Layout
+% http://en.wikibooks.org/wiki/LaTeX/Page_Layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Change margins, papersize, etc of the document
+\usepackage[
+  inner=28mm,% left margin on an odd page
+  outer=28mm % right margin on an odd page
+  ]{geometry}
+% Modify how \chapter, \section, etc. look
+% The titlesec package is very configureable
+\usepackage[T1]{fontenc}
+\usepackage{titlesec, blindtext, color}
+\newcommand{\hsp}{\hspace{5pt}}
+%\titleformat{\thechapter}[display]{\Huge\bfseries}{\thechapter\hsp}{10pt}{\Huge}
+\titleformat{\chapter}[hang]{\normalfont\Huge\bfseries}{\thechapter}{15pt}{\normalfont\Huge\bfseries}
+\titleformat*{\section}{\normalfont\Large\bfseries}
+\titleformat*{\subsection}{\normalfont\large\bfseries}
+\titleformat*{\subsubsection}{\normalfont\normalsize\bfseries}
+\titleformat*{\subparagraph}{\normalfont\normalsize\bfseries}
+\titlespacing*{\chapter}{0pt}{0pt}{20pt}
+
+% Clear empty pages between chapters
+\let\origdoublepage\cleardoublepage
+\newcommand{\clearemptydoublepage}{%
+  \clearpage
+  {\pagestyle{empty}\origdoublepage}%
+}
+\let\cleardoublepage\clearemptydoublepage
+
+% Change the headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} %delete everything
+%\renewcommand{\headrulewidth}{0pt} %remove the horizontal line in the header
+%\fancyhead[RE]{\small\nouppercase\leftmark} %even page - chapter title
+%\fancyhead[LO]{\small\nouppercase\rightmark} %uneven page - section title
+%\rhead{\chaptermark}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\fancyhead[LE,RO]{\chaptermark{TEST}} %page number on all pages
+\cfoot{\thepage}
+% Do not stretch the content of a page. Instead,
+% insert white space at the bottom of the page
+% Enable arithmetics with length. Useful when
+% typesetting the layout.
+\usepackage{calc}
+\usepackage{pagecolor}
+\usepackage{tikz}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography
+% http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareUnicodeCharacter{5C5}{1234}
+\usepackage[backend=bibtex,style=nature,bibencoding=utf8]{biblatex}
+\addbibresource{bib/p2mendeley_jakob}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Misc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Add bibliography and index to the table of
+% contents
+\usepackage[nottoc]{tocbibind}
+% Add the command \pageref{LastPage} which refers to the
+% page number of the last page
+\usepackage{lastpage}
+% Add todo notes in the margin of the document
+\usepackage[
+%  disable, %turn off todonotes
+  colorinlistoftodos, %enable a coloured square in the list of todos
+  textwidth=\marginparwidth, %set the width of the todonotes
+  textsize=scriptsize, %size of the text in the todonotes
+  ]{todonotes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hyperlinks
+% http://en.wikibooks.org/wiki/LaTeX/Hyperlinks
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Enable hyperlinks and insert info into the pdf
+% file. Hypperref should be loaded as one of the 
+% last packages
+\setlength{\headheight}{13.6pt}
+\usepackage{hyperref}
+\hypersetup{%
+	pdfpagelabels=true,%
+	plainpages=false,%
+	pdfauthor={Author(s)},%
+	pdftitle={Title},%
+	pdfsubject={Subject},%
+	bookmarksnumbered=true,%
+	colorlinks=false,%
+	citecolor=black,%
+	filecolor=black,%
+	linkcolor=black,% you should probably change this to black before printing
+	urlcolor=black,%
+	pdfstartview=FitH%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% APPENDIX, GLOSSARY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[toc,page]{appendix}
+\usepackage{csquotes}
+\usepackage[toc]{glossaries}
+\makeglossaries
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LISTINGS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{listings}
+\usepackage{tcolorbox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLORS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{codegreen}{RGB}{0,128,0}
+\definecolor{codeblue}{RGB}{0,0,128}
+\definecolor{codeblue2}{RGB}{0,0,255}
+\definecolor{codemargenta}{RGB}{255,99,255}
+\definecolor{codered}{RGB}{128,0,0}
+\definecolor{lightgray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{backgray}{RGB}{250,250,250}
+\definecolor{backcode}{RGB}{255,255,255}
+\definecolor{aaucolor}{RGB}{0,36,86}
+\definecolor{titlepagecolor}{RGB}{240,240,240}
+\definecolor{musthavecolor}{RGB}{226,68,55}
+\definecolor{shouldhavecolor}{RGB}{255,229,76} 
+\definecolor{nicetohavecolor}{RGB}{53,141,19}
+
+\definecolor{xmlbrown}{RGB}{163,21,21}
+\definecolor{xmlred}{RGB}{255,39,20}
+\definecolor{xmlgreen}{RGB}{34,128,0}
+\definecolor{xmlblue}{RGB}{0,65,243}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CODE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algorithmicx}
+\algrenewcommand\alglinenumber[1]{\tiny #1:}
+\algnewcommand{\LeftComment}[1]{\Statex \(\triangleright\) #1}
+
+\makeatletter
+\renewcommand{\ALG@name}{Algorithm}
+\renewcommand{\listalgorithmname}{List of \ALG@name s}
+\makeatother
+\makeatletter
+\newenvironment{breakablealgorithm}
+  {% \begin{breakablealgorithm}
+   \begin{center}
+     \refstepcounter{algorithm}% New algorithm
+     \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
+     \renewcommand{\caption}[2][\relax]{% Make a new \caption
+       {\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
+       \ifx\relax##1\relax % #1 is \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
+       \else % #1 is not \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
+       \fi
+       \kern2pt\hrule\kern2pt
+     }
+  }{% \end{breakablealgorithm}
+     \kern2pt\hrule\relax% \@fs@post for \@fs@ruled
+   \end{center}
+  }
+\makeatother
+\algrenewcommand\textproc{\textsc}
+
+\renewcommand{\lstlistingname}{Codesnippet}
+% set the default code style
+\lstdefinestyle{Cstyle}{
+    language=c,
+    basicstyle=\tiny\fontencoding{T1}\ttfamily,
+    tabsize=4, 
+    frame=tb,
+    showstringspaces=false, 
+    numbers=left, 
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{codeblue},
+    stringstyle=\color{codegreen},
+    captionpos=b,
+    xleftmargin=0.04\textwidth,
+    backgroundcolor=\color{backgray}
+}
+
+\lstdefinestyle{SQLstyle}{
+    language=SQL,
+    showspaces=false,
+    tabsize=4,
+    frame=tb,
+    numbers=left,
+    captionpos=b,
+    xleftmargin=0.04\textwidth,
+    showtabs=false,
+    breaklines=true,
+    showstringspaces=false,
+    breakatwhitespace=true,
+    escapeinside={(*@}{@*)},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{codeblue2}\bfseries,
+    stringstyle=\color{codered},
+    basicstyle=\fontencoding{T1}\ttfamily\tiny,
+    backgroundcolor=\color{backcode},
+    morekeywords={if, begin, references, is},
+    emph={count, max},
+    emphstyle={\color{codemargenta}}
+}
+
+\lstdefinestyle{CSharpstyle}{
+    language=[Sharp]C,
+    showspaces=false,
+    tabsize=4,
+    frame=tb,
+    numbers=left,
+    captionpos=b,
+    xleftmargin=0.04\textwidth,
+    showtabs=false,
+    breaklines=true,
+    showstringspaces=false,
+    breakatwhitespace=true,
+    escapeinside={(*@}{@*)},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{codeblue2}\bfseries,
+    stringstyle=\color{codered},
+    basicstyle=\fontencoding{T1}\ttfamily\tiny,
+    backgroundcolor=\color{backcode}
+}
+
+\lstdefinelanguage{XML}
+{
+  morestring=[s][\color{xmlblue}]{"}{"},
+  morestring=[s][\color{black}]{>}{<},
+  morecomment=[s]{<?}{?>},
+  morecomment=[s][\color{xmlgreen}]{<!--}{-->},
+  stringstyle=\color{black},
+  identifierstyle=\color{xmlred},
+  keywordstyle=\color{xmlbrown},
+  morekeywords={CheckBox, Grid, Binding, StaticResource, RowDefinitions, RowDefinition, xmlns,xsi,noNamespaceSchemaLocation,type,id,x,y,source,target,version,tool,transRef,roleRef,objective,eventually}% list your attributes here
+}
+
+
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{lightblue}{rgb}{0.0,0.0,0.9}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+\definecolor{darkred}{rgb}{0.6,0.0,0.0}
+
+
+\lstdefinestyle{XMLstyle}{
+  language=XML,
+  showspaces=false,
+  tabsize=4,
+  frame=tb,
+  numbers=left,
+  captionpos=b,
+  xleftmargin=0.04\textwidth,
+  showtabs=false,
+  breaklines=true,
+  showstringspaces=false,
+  breakatwhitespace=true,
+  escapeinside={(*@}{@*)},
+  stringstyle=\color{codered},
+  basicstyle=\fontencoding{T1}\ttfamily\tiny,
+  backgroundcolor=\color{backcode}
+}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COMMANDS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{ifthen}
+
+\newcommand{\newacr}[2]
+{\emph{#1} (#2)}
+\newcommand{\figureref}[1]
+{figure \ref{#1}}
+\newcommand{\Figureref}[1]
+{Figure \ref{#1}}
+\newcommand{\lstlistingref}[1]
+{codesnippet \ref{#1}}
+\newcommand{\Lstlistingref}[1]
+{Codesnippet \ref{#1}}
+\newcommand{\tableref}[1]
+{table \ref{#1}}
+\newcommand{\Tableref}[1]
+{Table \ref{#1}}
+\newcommand{\algoref}[1]
+{algorithm~\ref{#1}}
+\newcommand{\Algoref}[1]
+{Algorithm~\ref{#1}}
+\newcommand{\textnameref}[1]
+{\ref{#1} \textit{\nameref{#1}}}
+\newcommand{\mcite}
+{\colorbox{Yellow}{\textbf{CITE}}}
+\newcommand{\missing}
+{\colorbox{Yellow}{\textbf{MISSING}}}
+\newcommand{\intro}
+{\colorbox{Yellow}{\textbf{INTRO}}}
+\newcommand{\nicetohave}
+{\colorbox{nicetohavecolor}{\color{white}\fontsize{8pt}{6pt}\fontfamily{phv}\selectfont NICE TO HAVE}}
+\newcommand{\musthave}
+{\colorbox{musthavecolor}{\color{white}\fontsize{8pt}{6pt}\fontfamily{phv}\selectfont MUST HAVE}}
+\newcommand{\shouldhave}
+{\colorbox{shouldhavecolor}{\color{black}\fontsize{8pt}{6pt}\fontfamily{phv}\selectfont SHOULD HAVE}}
+
+
+
+\makeatletter
+\renewcommand\paragraph{%
+    \@startsection{paragraph}{4}{0mm}%
+       {-\baselineskip}%
+       {.5\baselineskip}%
+       {\normalfont\small\bfseries}}
+\makeatother
+
+\usepackage{threeparttable}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+
+
+

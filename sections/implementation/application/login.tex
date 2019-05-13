@@ -1,0 +1,18 @@
+\begin{lstlisting}[style=CSharpstyle]
+private void GetSavedLogin()
+{
+    var username = Properties.Settings.Default.Username;
+    var password = Properties.Settings.Default.Password;
+
+    tbUsername.Text = username;
+    tbPassword.Password = password;
+
+    if (username != string.Empty && password != string.Empty)
+    {
+        cbSaveCredentials.IsChecked = true;
+        btnLogin.Focus();       
+    }
+}
+\end{lstlisting}
+
+  

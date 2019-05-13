@@ -1,0 +1,70 @@
+\chapter{Evaluation}\label{ch:evaluering}
+\fancyhead[LE,RO]{\thechapter\hsp Evaluation}
+
+% Start text
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Datacollection
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Datacollection}
+\label{sec:datacollection}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Experiments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Experiments}
+\label{sec:experiments}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Results
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section{Results}
+\label{sec:results}
+
+I \tableref{table:program_results} er der blevet opstillet resultater for 10 forskellige ture. Tur 1, 4 og 5 er dog over de samme strækninger.
+
+\setlength{\tabcolsep}{0.5em} % for the horizontal padding
+\renewcommand{\arraystretch}{1.5}% for the vertical padding
+\definecolor{lightgray}{rgb}{0.95, 0.95, 0.95}
+\rowcolors{2}{lightgray}{white}
+\begin{table}[H]
+\resizebox{\textwidth}{!}{
+\tiny
+\begin{tabular}{|l|l|c|c|c|c|}
+\hline
+\rowcolor[HTML]{FFFFFF} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} Fil nr.}} & \multicolumn{1}{l|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} Transportmiddel}} &
+\multicolumn{1}{l|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} GPS huller}} &
+\multicolumn{1}{l|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} Fejlidentificering}} &
+\multicolumn{1}{l|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} Forkert inddeling}} &
+\multicolumn{1}{l|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} Unøjagtig start/stop position}} \\ 
+\hline
+1                       & Gang, cykel, bus  & - & - & - & - \\ 
+\hline
+2                       & Gang, bil         & - & - & - & - \\ 
+\hline
+3                       & Gang, bil         & - & - & - & - \\ 
+\hline
+4                       & Gang, cykel, bus  & - & - & - & - \\ 
+\hline
+5                       & Cykel             & - & - & - & - \\ 
+\hline
+6                       & Gang, bil         & - & X & - & - \\ 
+\hline
+7                       & Gang, bil         & - & - & - & - \\ 
+\hline
+8                       & Bil               & - & - & - & - \\ 
+\hline
+9                       & Bil               & - & - & - & - \\ 
+\hline
+10                      & Bil               & - & - & - & - \\ 
+\hline
+\end{tabular}%
+}
+    \caption{Oversigt over ture samt problemer, der kan ske på turene}
+    \label{table:program_results}
+\end{table}
+

@@ -1,0 +1,38 @@
+\subsubsection{Constraints}
+Constrains are like the name implies a set of rules that can be put upon a data column of a table. Constraints are primarily used to limit the data that can be entered into the data-columns the constraints have been added to.
+
+\begin{lstlisting}[style=SQLstyle, numberblanklines=false, label=lst:example_of_using_constraints, caption={Example of using constraints}]
+CREATE Student table  (
+	Id int PRIMARY KEY,
+	StudyNo int UNIQUE,
+	FullStudentName varchar(255) NOT NULL,
+	Grade int,
+	IsActivated bit NOT NULL DEFAULT(1),
+	
+	CHECK ((Grade <= 10) AND (Grade > 0))
+)
+\end{lstlisting}
+
+\noindent
+The most commonly used constrain types includes the following \cite{SQLConstraint}:
+
+\begin{itemize}
+\item \textbf{NOT NULL} constraint makes sure that the values of the affected row cant have the value NULL, and is used on line 5 of \lstlistingref{lst:example_of_using_constraints}. In this case the constraint makes it impossible for a student not to be either activated or deactivated. 
+
+\item \textbf{DEFAULT} constraints set a default value to a data-column if no value is specified. On \lstlistingref{lst:example_of_using_constraints} an implementation of the DEFAULT constraint has been used for the \enquote{IsActivated} column, setting the default value of the column to 1. 
+
+\item \textbf{UNIQUE} constraints are used to make sure every row in a specific column is unique. On \lstlistingref{lst:example_of_using_constraints} an implementation of the UNIQUE constraint has been used for the \enquote{StudyNo} column. This constraint makes sure that there are no 2 students with the exact same name. 
+
+\item \textbf{PRIMARY KEY} constraints are used to uniquely identify each record in a table. A primary key can be a single column or consist of several columns. Primary keys must contain unique values and have no NULL values.
+
+\item \textbf{FOREIGN KEY} constraints are used to reference to a primary key. In \lstlistingref{lst:example_of_using_constraints} the id has been set as a primary key. This means that the id can be referenced in other tables if needed. An example could be a detention table where the id is used. This also open up to the option of one to many relations, since one student can have multiple detentions.
+\end{itemize}
+
+\noindent
+Violating any of the constraints will throw an exception and no data will be inserted in the corresponding table.
+
+
+
+
+
+%materiale kan høre til materiale eller term, men ikke begge

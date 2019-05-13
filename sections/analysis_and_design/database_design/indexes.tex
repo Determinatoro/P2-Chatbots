@@ -1,0 +1,31 @@
+\subsubsection{Indexes}
+Indexing is a way of minimizing the number of searches required when looking for specific value in a column of a data table. Using indexes can be compared to the index of a book. Many books have indexes in the back that list on what pages certain topics where discussed, using indexes in SQL also refers to where values are in a table making it much faster to access this data. When working with SQL server there are 2 types of indexing known as clustered and non-clustered. The difference lies in how the data inside the indexes are structured. A clustered index defines the order of the data in the table itself. Data inside the table can only be ordered in 1 way, therefor there can only be one clustered index per table. In a SQL server adding the primary key constraint to a column makes that column into a clustered index. A non-clustered index does not affect the data inside the actual data table in any way, instead 2 new columns are made, into one of the columns the values of the non-clustered indexed column are stored and ordered, in the other column pointers to where the actual non-clustered index occurred. By using indexing binary search or another type of effective search algorithm can be applied instead of having to check each individual field of the column for a match. Each data table can have u to 999 non-clustered indexes, but using non clustered new columns are created and stored in a separate place, this will claim more storage space.\newline
+
+\noindent
+When creating indexes in MS SQL there are a couple different ways of doing so, one option is making an index of a whole table for which the syntax of doing so can be seen on \lstlistingref{lst:example_of_using_indexes_for_table}.
+\begin{lstlisting}[style=SQLstyle, numberblanklines=false, xleftmargin=0\textwidth, label=lst:example_of_using_indexes_for_table, numbers=none, caption={Example of using indexes on a table}]
+CREATE INDEX index_name ON table_name;
+\end{lstlisting}
+\noindent
+The command seen on \lstlistingref{lst:example_of_using_indexes_for_table} will make an index of an entire table.
+
+\begin{lstlisting}[style=SQLstyle,xleftmargin=0\textwidth,  numberblanklines=false, label=lst:example_of_using_indexes, numbers=none, caption={Example of creating indexes on a column}]
+CREATE INDEX index_name ON table_name (column_name);
+\end{lstlisting}
+\noindent
+Making indexes on a single column instead of the whole table will require inserting the column name as seen on \lstlistingref{lst:example_of_using_indexes}.
+
+\begin{lstlisting}[style=SQLstyle, numbers=none, xleftmargin=0\textwidth, numberblanklines=false, label=lst:example_of_using_unique_indexes, caption={Example of creating a UNIQUE INDEX}]
+CREATE UNIQUE INDEX index_name on table_name (column_name);
+\end{lstlisting}
+
+\noindent
+Another option for creating an index is the using the UNIQUE INDEX which is not only used for performance, but also for data integrity since the keyword UNIQUE does not allow any duplicates in the indexed column. The syntax of creating a UNIQUE INDEX can be seen on \lstlistingref{lst:example_of_using_unique_indexes}.
+
+\begin{lstlisting}[style=SQLstyle, numberblanklines=false, xleftmargin=0\textwidth, label=lst:example_of_using_composite_indexes, numbers=none, caption={Example of creating a composite index}]
+CREATE INDEX index_name on table_name (column1, column2);
+\end{lstlisting}
+
+\noindent
+The last option for making indexes is using the composite index which means creating indexes over 2 or more columns. An example of the syntax for creating a composite index can be seen on \lstlistingref{lst:example_of_using_composite_indexes}.
+
